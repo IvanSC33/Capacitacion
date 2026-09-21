@@ -1,0 +1,2 @@
+# Preserve the exact bytes of the certified C6 baseline on add and checkout.
+BASELINE_C6_FROZEN/** -text
