@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva - Flujo de Aprobación</title>
+    <link href="/mdb5-pro/css/mdb.min.css" rel="stylesheet">
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f4f5f7; }
+        .sim-section { display: none; } .sim-section.active { display: block; animation: fadeIn 0.3s; }
+        .step-img-box { background-color: #e2e8f0; border: 2px dashed #94a3b8; border-radius: 12px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+        .nav-link.active { background-color: #3b71ca; color: white !important; border-radius: 8px;}
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+            <div class="col-md-3 bg-dark p-4">
+                <h4 class="text-white fw-bold mb-5">ADRYAN Vacaciones</h4>
+                <div class="nav flex-column gap-2">
+                    <a href="javascript:void(0)" onclick="showSection('intro')" class="nav-link text-light p-3 active">01 Introducción</a>
+                    <a href="javascript:void(0)" onclick="showSection('sim')" class="nav-link text-light p-3">02 Simulador Pasos</a>
+                </div>
+            </div>
+            <div class="col-md-9 p-5">
+                <section id="intro" class="sim-section active">
+                    <h1 class="fw-bold mb-4">Configuración del Flujo de Aprobación</h1>
+                    <p class="text-muted fs-5 mb-5">Esta guía detalla el procedimiento para configurar las solicitudes.</p>
+                    <div class="card border-0 shadow-sm p-5 rounded-4">
+                        <h4 class="fw-bold text-primary mb-4">Estructura Jerárquica</h4>
+                        <p class="lead">Colaborador <i class="fas fa-arrow-right mx-2 text-muted"></i> Supervisor <i class="fas fa-arrow-right mx-2 text-muted"></i> Administrador</p>
+                    </div>
+                </section>
+
+                <section id="sim" class="sim-section">
+                    <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
+                        <div class="bg-dark p-4 text-white d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0 fw-bold" id="sim-step-title">Paso 1</h4>
+                            <div>
+                                <button onclick="changeSimStep(-1)" class="btn btn-outline-light rounded-circle px-3 py-2 me-2">&larr;</button>
+                                <button onclick="changeSimStep(1)" class="btn btn-primary fw-bold px-4" id="sim-next-btn">Siguiente</button>
+                            </div>
+                        </div>
+                        <div class="row g-0 p-5">
+                            <div class="col-md-4 pe-4">
+                                <div class="p-4 bg-primary bg-opacity-10 text-primary rounded-4 border-start border-4 border-primary">
+                                    <p class="mb-0 fw-bold" id="sim-step-desc">Instrucciones...</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div id="sim-img-display" class="step-img-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.sim-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => { if(l.getAttribute('onclick').includes(id)) l.classList.add('active'); });
+        }
+        const simSteps = [
+            { title: "Paso 1: Filtrar el proceso", desc: "Seleccione Vacaciones y pulse buscar.", img: "IMAGE 2", sub: "[Captura de Bandeja]" },
+            { title: "Paso 2: Selección Secuencia", desc: "Ubique la Secuencia 3 (Administrador).", img: "IMAGE 3", sub: "[Captura Detalle]" },
+            { title: "Paso 3: Perfiles", desc: "Haga clic en el icono del Sobre.", img: "IMAGE 4", sub: "[Captura Perfiles]" }
+        ];
+        let currentSimStep = 0;
+        function updateSimUI() {
+            const step = simSteps[currentSimStep];
+            document.getElementById('sim-step-title').innerText = step.title;
+            document.getElementById('sim-step-desc').innerText = step.desc;
+            document.getElementById('sim-img-display').innerHTML = `<div class="text-center"><h1 class="display-1 fw-bold text-secondary">${step.img}</h1><p class="text-muted">${step.sub}</p></div>`;
+            document.getElementById('sim-next-btn').innerText = currentSimStep === simSteps.length - 1 ? "Finalizar" : "Siguiente";
+        }
+        function changeSimStep(n) { currentSimStep += n; if(currentSimStep < 0) currentSimStep = 0; if(currentSimStep >= simSteps.length) currentSimStep = simSteps.length - 1; updateSimUI(); }
+        window.onload = updateSimUI;
+    </script>
+</body>
+</html>

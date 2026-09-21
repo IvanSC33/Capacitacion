@@ -1,0 +1,99 @@
+@{
+    Layout = null; // Quita esto si usarás el _Layout corporativo general de Adryan en el futuro
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Maestro de Capacitación | ADRYAN Cloud</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos Corporativos MDBootstrap (Rutas LIMPIAS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+    
+    <!-- Tu CSS modular local -->
+    <link href="~/css/adryan-academy.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark adr-navbar sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2 d-md-none" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand fw-bold" href="javascript:void(0)" onclick="ADRYAN.UI.navigate('adr-dashboard')">
+                <i class="fas fa-university me-2 text-info"></i> ADRYAN <span class="fw-light">ACADEMY</span>
+            </a>
+            <div class="d-flex align-items-center text-white ms-auto">
+                <span class="me-3 d-none d-md-inline text-light">Bienvenido, <strong id="adr-nav-username">Usuario</strong></span>
+                <div class="adr-badge-trophy me-3" title="Logros Obtenidos">
+                    <i class="fas fa-trophy"></i> <span id="adr-total-trophies" class="fw-bold ms-1 text-white">0</span>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=Usuario&background=0052cc&color=fff&bold=true" id="adr-nav-avatar" class="rounded-circle border border-2 border-white shadow-sm" height="38" alt="Avatar">
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block adr-sidebar collapse py-4 shadow-sm">
+                <div class="position-sticky">
+                    <ul class="nav flex-column gap-1 px-2" id="adr-main-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active text-dark" href="javascript:void(0)" data-target="adr-dashboard" onclick="ADRYAN.UI.navigate('adr-dashboard')">
+                                <i class="fas fa-th-large me-3 text-primary" style="width: 20px;"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="javascript:void(0)" data-target="adr-dashboard" onclick="ADRYAN.UI.navigate('adr-dashboard')">
+                                <i class="fas fa-search me-3 text-primary" style="width: 20px;"></i> Explorar Módulos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="javascript:void(0)" data-target="adr-progress-view" onclick="ADRYAN.UI.navigate('adr-progress-view')">
+                                <i class="fas fa-chart-line me-3 text-success" style="width: 20px;"></i> Mi Progreso
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-5 mx-3 p-3 bg-light rounded-3 border text-center">
+                        <i class="fas fa-medal fa-2x text-warning mb-2"></i>
+                        <h6 class="fw-bold mb-1" id="adr-sidebar-level">Nivel Principiante</h6>
+                        <p class="small text-muted mb-2">¡Sigue aprendiendo para subir!</p>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-warning" id="adr-sidebar-xp" role="progressbar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-4">
+                <!-- Partial Views -->
+                <partial name="_Dashboard" />
+                <partial name="_ModuleDetail" />
+                <partial name="_CourseViewer" />
+                <partial name="_QuizEngine" />
+                <partial name="_Certificate" />
+                <partial name="_LearningHistory" />
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts Modulares (CDNs LIMPIOS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <script src="~/js/academy/adryan-core.js"></script>
+    <script src="~/js/academy/adryan-config.js"></script>
+    <script src="~/js/academy/adryan-data.js"></script>
+    <script src="~/js/academy/adryan-auth.js"></script>
+    <script src="~/js/academy/adryan-lms.js"></script>
+    <script src="~/js/academy/adryan-quiz.js"></script>
+    <script src="~/js/academy/adryan-ui.js"></script>
+</body>
+</html>

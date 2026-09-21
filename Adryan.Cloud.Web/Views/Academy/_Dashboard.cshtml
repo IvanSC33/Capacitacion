@@ -1,0 +1,59 @@
+<section id="adr-dashboard" class="adr-view-section active">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+        <div>
+            <h1 class="h2 fw-bold text-dark mb-1">Centro de Capacitación ADRYAN</h1>
+            <p class="text-muted">Rutas de aprendizaje personalizadas para tu crecimiento.</p>
+        </div>
+        <div>
+            <button class="btn btn-outline-danger btn-sm" onclick="ADRYAN.Auth.resetData()"><i class="fas fa-sync-alt me-1"></i> Reiniciar Progreso</button>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="adr-stat-card shadow-2-strong">
+                <h6 class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Cursos Completados</h6>
+                <h2 class="fw-bold text-dark mt-2 mb-1" id="adr-stat-courses">0</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="adr-stat-card shadow-2-strong">
+                <h6 class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Progreso General</h6>
+                <h2 class="fw-bold text-dark mt-2 mb-2" id="adr-stat-progress">0%</h2>
+                <div class="adr-progress-bar-container">
+                    <div class="adr-progress-fill" id="adr-stat-progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="adr-stat-card shadow-2-strong">
+                <h6 class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Módulos Dominados</h6>
+                <h2 class="fw-bold text-success mt-2 mb-1" id="adr-stat-modules">0</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="adr-stat-card shadow-2-strong border-warning border-opacity-50" style="background-color: #fffdf5;">
+                <h6 class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Insignias Ganadas</h6>
+                <h2 class="fw-bold text-warning mt-2 mb-1"><span id="adr-stat-badges">0</span> <i class="fas fa-star text-warning"></i></h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Search -->
+    <div class="adr-search-container mb-5">
+        <div class="input-group input-group-lg shadow-3-strong rounded-pill overflow-hidden border">
+            <span class="input-group-text bg-white border-0 ps-4"><i class="fas fa-search text-primary"></i></span>
+            <input type="text" id="adr-module-search" class="form-control border-0 px-3 fs-6" placeholder="¿Qué deseas aprender hoy?">
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0 text-dark">Rutas de Aprendizaje Disponibles</h4>
+        <span class="badge bg-primary rounded-pill shadow-sm py-2 px-3">5 Módulos</span>
+    </div>
+
+    <div class="row g-4" id="adr-modules-container">
+        <!-- Dinámico via JS -->
+    </div>
+</section>

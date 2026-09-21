@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework: Centro de Capacitación</title>
+    <link href="/mdb5-pro/css/mdb.min.css" rel="stylesheet">
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; }
+        .sim-section { display: none; animation: fadeIn 0.4s; }
+        .sim-section.active { display: block; }
+        .nav-link.active { background-color: #3b71ca !important; color: white !important; font-weight: bold; border-radius: 8px; }
+        .step-img-box { background-color: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 1rem; min-height: 350px; display: flex; align-items: center; justify-content: center; }
+        .btn-role.active { background-color: #3b71ca; color: white; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+            <div class="col-md-3 bg-dark text-white p-4">
+                <div class="d-flex align-items-center mb-5">
+                    <div class="bg-primary text-white rounded p-2 me-3 fw-bold fs-4">A</div>
+                    <div><h5 class="mb-0 fw-bold">ADRYAN</h5><small class="text-uppercase text-primary">Manual Técnico</small></div>
+                </div>
+                <div class="nav flex-column gap-2">
+                    <a href="javascript:void(0)" onclick="showSection('intro')" class="nav-link text-light p-3 active">01 Introducción</a>
+                    <a href="javascript:void(0)" onclick="showSection('flujos')" class="nav-link text-light p-3">02 Flujos de Red</a>
+                    <a href="javascript:void(0)" onclick="showSection('sim')" class="nav-link text-light p-3">03 Simuladores</a>
+                </div>
+            </div>
+            
+            <div class="col-md-9 p-4 p-md-5 overflow-auto">
+                <section id="intro" class="sim-section active">
+                    <h1 class="display-5 fw-bold text-dark mb-4">Módulo de Vacaciones: <br><span class="text-primary">Gestión Integral.</span></h1>
+                    <p class="lead text-muted mb-5">Bienvenido al entorno de capacitación digital. Este sistema centraliza las responsabilidades de configuración en tres perfiles críticos.</p>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm p-4 hover-shadow">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded p-3 mb-4 d-inline-block fs-3 fw-bold">C</div>
+                                <h4 class="fw-bold">Colaborador</h4>
+                                <p class="text-muted small">Usuario origen. Realiza solicitudes basadas en saldos proyectados.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm p-4">
+                                <div class="bg-success bg-opacity-10 text-success rounded p-3 mb-4 d-inline-block fs-3 fw-bold">S</div>
+                                <h4 class="fw-bold">Supervisor</h4>
+                                <p class="text-muted small">Filtro táctico. Tiene potestad de modificar solicitudes antes de aprobación.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm bg-dark text-white p-4">
+                                <div class="bg-primary text-white rounded p-3 mb-4 d-inline-block fs-3 fw-bold">A</div>
+                                <h4 class="fw-bold">Administrador</h4>
+                                <p class="text-light small">Poder absoluto. Configura SMTP y autoriza vacaciones en curso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="flujos" class="sim-section text-center">
+                    <h2 class="fw-bold mb-5">Arquitectura del Proceso</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4 py-5">
+                        <div class="card border-0 shadow-sm p-4 w-100" style="max-width: 250px; border-left: 4px solid #3b71ca !important;"><span class="fw-bold">Colaborador</span></div>
+                        <i class="fas fa-arrow-right text-muted d-none d-md-block"></i>
+                        <div class="card border-0 shadow-sm p-4 w-100" style="max-width: 250px; border-left: 4px solid #14a44d !important;"><span class="fw-bold">Supervisor</span></div>
+                        <i class="fas fa-arrow-right text-muted d-none d-md-block"></i>
+                        <div class="card border-0 shadow-lg bg-dark text-white p-4 w-100" style="max-width: 250px; transform: scale(1.1);"><span class="fw-bold">Administrador</span></div>
+                    </div>
+                </section>
+
+                <section id="sim" class="sim-section">
+                    <h2 class="fw-bold mb-4">Entrenamiento Dinámico</h2>
+                    <div class="btn-group mb-4 shadow-0 border rounded-3 p-1 bg-white">
+                        <button onclick="changeRole('colaborador')" class="btn btn-role btn-light shadow-0 active">Colaborador</button>
+                        <button onclick="changeRole('supervisor')" class="btn btn-role btn-light shadow-0">Supervisor</button>
+                        <button onclick="changeRole('administrador')" class="btn btn-role btn-light shadow-0">Administrador</button>
+                    </div>
+
+                    <div class="card border-0 shadow-5 rounded-5 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-5 p-5 d-flex flex-column justify-content-center">
+                                <h3 id="step-title" class="fw-bold mb-3">Acceso</h3>
+                                <p id="step-desc" class="text-muted mb-5">Descripción del paso.</p>
+                                <div class="d-flex gap-2 mt-auto">
+                                    <button onclick="changeStep(-1)" class="btn btn-outline-secondary px-3 py-2 fw-bold">&larr;</button>
+                                    <button onclick="changeStep(1)" id="next-btn" class="btn btn-primary px-4 py-2 fw-bold">Siguiente</button>
+                                </div>
+                            </div>
+                            <div class="col-md-7 p-4">
+                                <div class="step-img-box text-center">
+                                    <h1 class="display-1 fw-bold text-muted opacity-50" id="step-img-text">IMG_01</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.sim-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => { if(l.getAttribute('onclick').includes(id)) l.classList.add('active'); });
+        }
+        const simData = {
+            colaborador: [{ title: "Acceso al Historial", desc: "Ingrese a 'Mis Vacaciones'. Verá sus días disponibles.", imgText: "COL_01" }, { title: "Registro", desc: "Seleccione fechas.", imgText: "COL_02" }],
+            supervisor: [{ title: "Bandeja Pendientes", desc: "Apruebe solicitudes subordinadas.", imgText: "SUP_01" }],
+            administrador: [{ title: "Aprobación Final", desc: "Validación para pase a planilla.", imgText: "ADM_01" }]
+        };
+        let currentRole = 'colaborador', currentStep = 0;
+        function updateSimUI() {
+            const data = simData[currentRole][currentStep];
+            document.getElementById('step-title').innerText = data.title; document.getElementById('step-desc').innerText = data.desc; document.getElementById('step-img-text').innerText = data.imgText;
+        }
+        function changeRole(r) { currentRole = r; currentStep = 0; document.querySelectorAll('.btn-role').forEach(t => t.classList.remove('active', 'btn-primary')); document.querySelector(`[onclick="changeRole('${r}')"]`).classList.add('active', 'btn-primary'); updateSimUI(); }
+        function changeStep(n) { currentStep += n; if(currentStep < 0) currentStep = 0; if(currentStep >= simData[currentRole].length) currentStep = simData[currentRole].length - 1; updateSimUI(); }
+        window.onload = updateSimUI;
+    </script>
+</body>
+</html>

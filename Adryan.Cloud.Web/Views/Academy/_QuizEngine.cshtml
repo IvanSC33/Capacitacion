@@ -1,0 +1,26 @@
+<section id="adr-quiz-view" class="adr-view-section">
+    <div class="mx-auto" style="max-width: 800px;">
+        <button class="btn btn-link text-muted px-0 mb-4 text-decoration-none" onclick="ADRYAN.UI.navigate('adr-module-view')"><i class="fas fa-arrow-left"></i> Abandonar Evaluación</button>
+        
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-header bg-white border-bottom p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="fw-bold mb-0 text-primary"><i class="fas fa-clipboard-check me-2"></i> Evaluación Final</h4>
+                    <span class="badge bg-primary rounded-pill px-3 py-2" id="adr-quiz-progress-text">Pregunta 1 de X</span>
+                </div>
+                <div class="progress mt-3" style="height: 6px;">
+                    <div class="progress-bar bg-primary" id="adr-quiz-bar" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="card-body p-5" id="adr-quiz-container">
+                <h3 class="fw-bold mb-4" id="adr-quiz-question">¿Pregunta?</h3>
+                <div class="d-flex flex-column gap-3" id="adr-quiz-options">
+                    <!-- Opciones -->
+                </div>
+            </div>
+            <div class="card-footer bg-white border-top p-4 text-end">
+                <button class="btn adr-btn-primary px-5" id="adr-btn-next-question" onclick="ADRYAN.Quiz.nextQuestion()">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+            </div>
+        </div>
+    </div>
+</section>

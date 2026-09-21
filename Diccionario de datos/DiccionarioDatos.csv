@@ -1,0 +1,50 @@
+﻿,,
+Nombre del Campo,Descripción Detallada e Importancia para el Negocio,Valores Permitidos / Ejemplos
+codigo_unico,Llave foránea. Identificador único del colaborador titular. Permite relacionar a cada familiar con el trabajador que lo tiene a cargo.,"Ej: 000000170, 000000214"
+tipo_familiar,Código de Parentesco. Identifica el código del vínculo familiar o legal que tiene la persona con el trabajador titular.,C = Cónyuge
+,,
+,,H = Hijo(a)
+,,
+,,O = Concubino(a)
+,,
+,,P = Padres
+,,
+,,M = Hijo Mayor de edad Incapaz
+des_tipo_familiar,Descripción del Parentesco. Es la etiqueta descriptiva del campo tipo_familiar.,"Ej: CONYUGE, HIJO(A), CONCUBINO(A)"
+secuencia_familia,"Correlativo. Número secuencial que diferencia a los familiares de un mismo trabajador (útil cuando tiene varios hijos, por ejemplo).","Ej: 1, 2, 3"
+sexo,Género del Derechohabiente. Identifica el género del familiar registrado.,1 = Masculino
+,,
+,,2 = Femenino
+inscrito_escolaridad,"Indicador de Asignación Familiar. Es un campo crítico para planillas. Determina si por este familiar el trabajador tiene derecho a percibir el concepto de Asignación Familiar (10% de la RMV). Se suele marcar en ""1"" para hijos menores de 18 años o mayores cursando estudios superiores.",1 = Sí recibe
+,,
+,,0 = No recibe
+,,
+,,NULL = No aplica
+situacion_familia,Estado del Registro. Indica si el familiar está activo en el sistema de recursos humanos.,10 = Activo
+,,
+,,A = Activo
+tipo_documento,Tipo de Identificación. Define la clase de documento con el que se identificó al familiar para darlo de alta en el T-Registro.,"Ej: DOC. NACIONAL DE IDENTIDAD, PARTIDA DE NACIMIENTO, CARNET DE EXTRANJERÍA."
+fecha_nacimiento,Fecha de Nacimiento. Fecha en la que nació el familiar. Dato clave para que el sistema dé de baja automáticamente la Asignación Familiar cuando un hijo cumple 18 años (si no cursa estudios).,Formato: YYYY-MM-DD
+fecha_fallecimiento,"Fecha de Defunción. Registra el deceso del familiar. Si la persona está viva, el sistema guarda una fecha nula por defecto.",Formato: YYYY-MM-DD
+,,
+,,(Si está vivo guarda 1900-01-01)
+tipo_baja,Motivo de Baja (T-Registro). Código que explica por qué el familiar dejó de ser derechohabiente del trabajador ante SUNAT/EsSalud.,02 = Fallecimiento
+,,
+,,03 = Otros
+,,
+,,04 = Divorcio
+,,
+,,05 = Fin de concubinato
+,,
+,,06 = Fin de gestación
+,,
+,,07 = Hijo mayor de edad
+,,
+,,08 = Error en registro
+,,
+,,Vacio/NULL = Sigue activo
+fecha_alta,Fecha de Alta. Fecha en la que el familiar fue registrado formalmente (Alta en el T-Registro o sistema interno).,Formato: YYYY-MM-DD
+fecha_baja,"Fecha de Baja. Fecha en la que el familiar perdió la condición de derechohabiente. Si sigue activo, guarda una fecha nula por defecto.",Formato: YYYY-MM-DD
+,,
+,,(Si sigue activo guarda 1900-01-01)
+nacionalidad,País de Origen. Nacionalidad del familiar registrado.,"Ej: PERU, CUBA, ESTADOS UNIDOS, Vacio/NULL"

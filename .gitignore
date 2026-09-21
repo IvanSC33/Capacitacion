@@ -1,0 +1,16 @@
+# .NET build and IDE output
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+
+# Local-only configuration and runtime files
+**/appsettings.Development.json
+*.log
+*.tmp
+
+# Node and operating-system artifacts
+node_modules/
+.DS_Store
+Thumbs.db

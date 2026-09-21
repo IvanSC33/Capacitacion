@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework: Carga Masiva Integral</title>
+    <link href="/mdb5-pro/css/mdb.min.css" rel="stylesheet">
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; }
+        .step-img-box { background-color: #f1f5f9; border: 2px dashed #cbd5e1; min-height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 1.5rem; }
+    </style>
+</head>
+<body class="p-4 p-md-5">
+    <div class="container-fluid max-w-6xl mx-auto">
+        <h1 class="display-4 fw-bold text-dark mb-3">Proceso de Carga Masiva</h1>
+        <p class="lead text-muted mb-5">Jerarquía de Carga Obligatoria para migración de datos.</p>
+        
+        <div class="card border-0 shadow-5 rounded-5 overflow-hidden">
+            <div class="row g-0 p-5">
+                <div class="col-md-5 pe-5 d-flex flex-column justify-content-center">
+                    <span class="badge bg-primary rounded-pill mb-3 align-self-start" id="sim-step-badge">Paso 1</span>
+                    <h2 id="sim-title" class="fw-bold mb-4">Preparar Archivo</h2>
+                    <p id="sim-desc" class="text-muted fs-5 mb-5">Seleccione el módulo y exporte Excel.</p>
+                    
+                    <div class="d-flex justify-content-between align-items-center mt-auto border-top pt-4">
+                        <button onclick="changeSimStep(-1)" class="btn btn-outline-secondary px-4 py-2 fw-bold">&larr;</button>
+                        <button onclick="changeSimStep(1)" id="next-btn" class="btn btn-primary px-4 py-2 fw-bold">Siguiente</button>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="step-img-box shadow-inner text-center p-4">
+                        <div>
+                            <h1 class="display-1 fw-bold text-secondary mb-4" id="sim-visual-text">STEP_01</h1>
+                            <p id="sim-visual-caption" class="text-muted fw-bold text-uppercase tracking-wide">Vista: Menú Carga Masiva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const simSteps = [
+            { title: "Exportar Plantilla", desc: "Pulse EXPORTAR para bajar Excel.", visual: "STEP_EXP_01", caption: "Botón Exportar" },
+            { title: "Importar Archivo", desc: "Suba archivo temporal.", visual: "STEP_IMP_02", caption: "Ventana Archivo" },
+            { title: "Validar Estructura", desc: "Cruce de info con niveles previos.", visual: "STEP_VAL_03", caption: "Validación" },
+            { title: "Grabación Exitosa", desc: "Migración definitiva a BD.", visual: "STEP_SAVE_04", caption: "¡Carga Exitosa!" }
+        ];
+        let currentSimStep = 0;
+        function updateSimUI() {
+            const step = simSteps[currentSimStep];
+            document.getElementById('sim-title').innerText = step.title;
+            document.getElementById('sim-desc').innerText = step.desc;
+            document.getElementById('sim-visual-text').innerText = step.visual;
+            document.getElementById('sim-visual-caption').innerText = step.caption;
+            document.getElementById('sim-step-badge').innerText = `Paso ${currentSimStep + 1}`;
+            document.getElementById('next-btn').innerText = currentSimStep === simSteps.length - 1 ? "Finalizar" : "Siguiente";
+        }
+        function changeSimStep(n) { currentSimStep += n; if(currentSimStep < 0) currentSimStep = 0; if(currentSimStep >= simSteps.length) currentSimStep = 0; updateSimUI(); }
+        window.onload = updateSimUI;
+    </script>
+</body>
+</html>

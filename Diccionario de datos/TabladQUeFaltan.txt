@@ -1,0 +1,13 @@
+select * from c01.PLLCuentaContable
+
+select * from c01.pllcomprobante
+
+select * from c01.pllasientocontable
+
+select * from [c01].[PLLAsientoCalculado]
+
+select * from [c01].[PLLHistoricoAsientoCalculado]
+
+reporte de AFP net
+
+c01.ADMHistoricoCese
